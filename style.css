@@ -1,0 +1,865 @@
+@CHARSET "utf-8";
+
+/* =====================================================
+   이미지 슬라이드 관련
+   ===================================================== */
+
+#slides {
+  position: relative;
+}
+#slides .slides-container {
+  display: none;
+}
+#slides .scrollable {
+  *zoom: 1;
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+}
+#slides .scrollable:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.slides-navigation {
+  margin: 0 auto;
+  position: absolute;
+  z-index: 3;
+  top: 46%;
+  width: 100%;
+}
+.slides-navigation a {
+  position: absolute;
+  display: block;
+}
+.slides-navigation a.prev {
+  left: 0;
+}
+.slides-navigation a.next {
+  right: 0;
+}
+
+.slides-pagination {
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    
+    margin-bottom: 2%;
+}
+
+.slides-pagination a {
+    width: 10px;
+    height: 10px;
+    background-color: #DBD9DB;
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle;
+    *vertical-align: auto;
+    zoom: 1;
+    *display: inline;
+    margin: 8px;
+    overflow: hidden;
+    text-indent: -100%;
+}
+
+.slides-pagination a:hover {
+    background-color: #333;
+}
+
+.slides-pagination a:active {
+    background-color: #000;
+}
+.slides-pagination a.current {
+    background-color: rgba(0,0,0,0);
+    border: 4px solid #DBD9DB;
+}
+
+/* =====================================================
+   Custom CSS
+   ===================================================== */
+
+body{
+    font-family: "Neuzeit S W01", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    -webkit-font-smoothing:antialiased; 
+    -webkit-text-stroke-width:0.1px;
+}
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+form,fieldset,input,textarea,p,blockquote,th,td {
+    padding: 0;
+    margin: 0;
+    
+}
+
+a {
+    text-decoration: none;
+}
+
+ol,ul {
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+
+
+/* =====================================================
+   상단 고정 메뉴 (Navigation)
+   ===================================================== */
+
+#menu2 {
+    right: 0;
+}
+
+#menu2 li {
+    float: left;
+}
+
+#menu2 li a {
+    display:block;
+    text-align: left;
+    text-decoration:none;
+    margin-left: 40px;
+	
+    font-size: 0.8em;
+    padding: 4px 10px;
+	
+    color: #000;
+    font-weight: 500;
+    background-color: rgba(255,255,255,0.5);
+}
+
+#menu2 li:nth-child(2) {
+    margin-right: 5em;
+}
+
+#menu2 li a:hover {
+    color: #fff;
+    background-color: #000;
+    
+    -webkit-transition: all 0.2s ease; 
+    -moz-transition: all 0.2s ease; 
+    -ms-transition: all 0.2s ease; 
+    -o-transition: all 0.2s ease; 
+    transition: all 0.2s ease; 
+}
+
+#menu2 li:hover {
+}
+
+.menu_frame2{
+    position: fixed;
+    z-index: 70;
+    
+    margin-top: 3.4em;
+}
+
+.menu_frame2 {
+    right: 0;
+    margin-right: 0;
+}
+
+.active {
+    background: black;
+}
+
+/* =====================================================
+   표지
+   ===================================================== */
+
+.main_content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#main_bg{
+    height: 100%;
+    z-index: -1000;
+    *zoom:1
+}
+
+#main_bg:after {
+    content:""; 
+    display:block; 
+    clear:both 
+}
+
+
+/*       title      */
+
+.title1 { 
+    font-size:5em;
+    line-height:1.2em;
+    float: left;
+    
+    margin-left: 16%;
+    margin-top: 8%;
+}
+
+.title1 span {
+    font-weight: 400;
+}
+.title1 p {
+    margin-top: 20px;
+}
+
+.main_title{
+}
+
+/*       메인(1)페이지 우측 메뉴       */
+
+#main_menu {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align:right;
+    z-index:12; 
+    
+    
+    margin-right: 16%;
+    margin-bottom: 8%;
+}
+
+#main_menu h2 {
+    display:block;
+    
+    font-size:2.5em; 
+    line-height:1em; 
+    font-weight: 300;
+}
+
+#main_menu h2:after { 
+    content:"\A"; 
+    white-space:pre; 
+}
+
+#main_menu h2 a { 
+    display:inline-block; 
+    
+    margin:8px 0; 
+    font-size:0.8em;
+    color:#000; 
+    -webkit-transition:color .1s; 
+}
+
+#main_menu h2.deselected a { 
+    color:#b4b4b4; 
+}
+/* after mouse hover color */
+#main_menu h2:hover a, #main_menu h2.selected a { 
+    color:#DBD9DB; 
+}
+
+
+/* =====================================================
+   2 페이지 이후
+   ===================================================== */
+
+.sub_title_b, .sub_title_w {
+    position: absolute;
+    margin-top: 3.4em;
+    margin-left: 5em;
+}
+
+.sub_title_b h5 {
+    font-size: 0.8em;
+    color: #FFF;
+    font-weight: bold;
+    background-color: #000;
+    padding: 4px 10px;
+}
+
+.sub_title_w h5 {
+    font-size: 0.8em;
+    color: #000;
+    font-weight: bold;
+    background-color: #FFF;
+    padding: 4px 10px;
+}
+
+
+
+/*     본문 글자색 흰색.   */
+
+.sub_title1{
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    margin-left: 5em;
+    margin-bottom: 5em;
+}
+
+
+
+.sub_title1 h2{
+    text-align: left;
+    
+    font-size: 2.4em;
+    color: #fff;
+    
+    padding-bottom: 10px;
+}
+
+.sub_title1 p {
+    display: inline-block;
+    line-height: 1px;
+    font-size: 6em;
+    color: #fff;
+    margin-top: 0.2em;
+    -webkit-font-smoothing:none; 
+}
+
+.sub_title1 h3{
+    font-weight:200;
+    font-size: 0.8em;
+    color: #fff;
+    
+    padding-bottom: 4px;
+}
+
+.sub_title1 h4{
+    margin-top: 1em;
+    margin-left: -4px;
+    font-weight: 200;
+    font-size: 0.9em;
+    line-height: 1.6em;
+    color: #fff;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.85);
+}
+
+.sub_title_right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    
+    margin-bottom: 6em;
+    margin-right: 5em;
+    
+}
+
+.sub_title_right h4 {
+    width: 298px;
+    float: left;
+    font-weight: 200;
+    font-size: 0.9em;
+    line-height: 1.6em;
+    color: #000;
+    padding: 10px;
+    background-color: rgba(255,255,255,0.7);    
+}
+
+.sub_title_right h4:after {
+    content: '';
+    position: absolute;
+    border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+	border-left: 10px solid rgba(255,255,255,0.7);
+    margin-left: 162px;
+    margin-top: -40px;
+}
+
+.sub_title_right div {
+    margin-left: 18px;
+    float: right;
+    width: 100px;
+    height: 90px;
+    background-color: #666;
+    opacity: 0.6;
+    background-image: url(images/icon_vf.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 4.8em;
+}
+
+.sub_title_right div:hover {
+    opacity: 0.9;
+    -webkit-transition: all 0.2s ease; 
+    -moz-transition: all 0.2s ease; 
+    -ms-transition: all 0.2s ease; 
+    -o-transition: all 0.2s ease; 
+    transition: all 0.2s ease; }
+}
+
+
+
+
+
+
+
+
+
+
+
+/*     본문 글자색 검정색.   */
+
+.sub_title2 {
+    height: 100%;
+    bottom: 0;
+    z-index: 10;
+    margin-left: 5em;
+    margin-bottom: 5em;
+}
+
+.sub_title2 h2 {
+    text-align: left;
+    
+    font-size: 2.4em;
+    color: #000;
+    
+    padding-bottom: 10px;
+}
+
+.sub_title2 p {
+    display: inline-block;
+    line-height: 1px;
+    font-size: 6em;
+    color: #000;
+    margin-top: 0.2em;
+    -webkit-font-smoothing:none; 
+}
+
+.sub_title2 h3{
+    font-weight:200;
+    font-size: 0.8em;
+    color: #000;
+    
+    padding-bottom: 4px;
+}
+
+.sub_title2 h4{
+    margin-top: 1em;
+    margin-left: -4px;
+    font-weight: 200;
+    font-size: 0.9em;
+    line-height: 1.6em;
+    color: #000;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.1);
+}
+
+/*
+#vr_bg {
+    background:url('images/render03.png');
+    background-repeat: no-repeat;
+    
+    width: 100%;
+    height:100%;
+    z-index:-1;
+    
+    background-size: calc(100% + 50px);
+}
+*/
+/* =====================================================
+    ABOUT
+   ===================================================== */
+
+.about_left {
+    float: left;
+    
+    height: 100%;
+    width: 50%;
+}
+
+.about_left .about_copy {
+    margin-top: 36%;
+    margin-left: 0.8em
+}
+
+.about_left div p {
+    display: block;
+    line-height: 1.6em;
+    text-align: center;
+    font-style: italic;
+    font-size: 1em;
+    padding: 50px;
+}
+.about_left div p:after {
+    content:""; 
+    position: absolute; 
+    height: 11em;
+    width: 10em;
+    margin-top: -100px;
+    margin-left: -230px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+.about_left_profile {
+    position: absolute;
+    bottom: 0;
+    margin-left: 5em;
+    margin-bottom: 5em;
+}
+.about_left_profile .profile {
+    float: left;
+    width: 60px;
+    height: 60px;
+    background-image: url(images/profile.png);
+    background-size: 68px 68px;
+    background-position: top;
+}
+.about_left_profile h5 {
+    float: right;
+    font-size: 0.9em;
+    line-height: 1.6em;
+    font-weight: 200;
+    margin-left: 16px;
+    margin-top: 6px;
+}
+
+
+.about_right {
+    position: relative;
+    float: right;
+    width: 50%;
+    height: 100%;
+    background-image: url(images/about_bg.jpg);
+    background-size: 60em;
+    background-position: bottom;
+    overflow: hidden;
+}
+
+.about_right .about_right_skill {
+    position: absolute;
+    top: 26%;
+    text-align: left;
+    font-size: 0.9em;
+    line-height: 1.7em;
+    color: #fff;
+    margin-left: 16%;
+    display: inline-block;
+}
+
+.about_right_skill tr {
+}
+
+.about_right_skill tr td {
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.about_right_skill tr:nth-child(5), .about_right_skill tr:nth-child(8),.about_right_skill tr:nth-child(9) {
+    
+}
+
+.about_right_skill tr td a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.about_right_skill tr td a:hover {
+    color: #777;
+}
+
+.table_title {
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.table_sub_title {    
+    font-weight: bold;
+}
+
+
+.about_right .about_right_copyright {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 5em;
+    margin-bottom: 5em;
+}
+
+.about_right .about_right_copyright p {
+    color: #B0B0B3;
+    font-size: 0.9em;
+}
+
+
+
+
+/* =====================================================
+   Arrow
+   ===================================================== */
+
+.prev {
+    margin-left: 5em;
+    margin-top: -3em;
+}
+
+.next {
+    margin-top: -3em;
+    right: 0;
+    margin-right: 5em;
+    
+}
+
+.left {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-image: url(images/left_default.svg);
+    
+    /*
+    width: 50px;
+    height: 50px;
+    border: 4px solid #DBD9DB;*/*/
+}
+.left:hover{
+
+    width: 50px;
+    height: 50px;
+    background-image: url(images/left_hover.svg);
+    
+    -webkit-transition: all 0.2s ease; 
+    -moz-transition: all 0.2s ease; 
+    -ms-transition: all 0.2s ease; 
+    -o-transition: all 0.2s ease; 
+    transition: all 0.2s ease; 
+}
+.right {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-image: url(images/right_default.svg);
+}
+
+.right:hover{
+    width: 50px;
+    height: 50px;
+    background-image: url(images/right_hover.svg);
+    
+    -webkit-transition: all 0.2s ease; 
+    -moz-transition: all 0.2s ease; 
+    -ms-transition: all 0.2s ease; 
+    -o-transition: all 0.2s ease; 
+    transition: all 0.2s ease; 
+}
+/*
+.left:after {
+    content: '';
+	display: inline-block;
+    
+    margin-bottom: 1px;
+    margin-left: 15px;
+      
+    width: 10px;
+    height: 10px;
+    
+    border-top: 3px solid #DBD9DB;
+    border-right: 3px solid #DBD9DB;
+    -moz-transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+}
+
+.left:before {
+    content: '';
+	display: inline-block;
+    
+    margin-bottom: -12px;
+    margin-left: 15px;
+    
+    width: 20px;
+    height: 3px;
+    background-color: #DBD9DB;
+}
+
+.right {
+    display: inline-block;
+    
+    margin-top: -2em;
+    
+    width: 50px;
+    height: 50px;
+    border: 4px solid #DBD9DB;
+}
+
+.right:after {
+    content: '';
+	display: inline-block;
+    
+    margin-left: 22px;
+    margin-bottom: 1px;
+    
+    width: 10px;
+    height: 10px;
+    
+    border-top: 3px solid #DBD9DB;
+    border-right: 3px solid #DBD9DB;
+    
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.right:before {
+    content: '';
+	display: inline-block;
+    
+    margin-bottom: -12px;
+    margin-left: 15px;
+    
+    width: 20px;
+    height: 3px;
+    background-color: #DBD9DB;
+}
+
+.left:hover, .right:hover {
+    border: 4px solid #fff;
+    background: #fff;
+
+    -webkit-transition: all 0.2s ease; 
+    -moz-transition: all 0.2s ease; 
+    -ms-transition: all 0.2s ease; 
+    -o-transition: all 0.2s ease; 
+    transition: all 0.2s ease; 
+}
+
+.prev:hover .left:after, .next:hover .right:after {
+    border-top: 3px solid #000;
+    border-right: 3px solid #000;
+
+    -webkit-transition: all 0.2s ease; 
+    -moz-transition: all 0.2s ease; 
+    -ms-transition: all 0.2s ease; 
+    -o-transition: all 0.2s ease; 
+    transition: all 0.2s ease; }
+
+.prev:hover .left:before, .next:hover .right:before{
+    background-color: #000;
+
+    -webkit-transition: all 0.2s ease; 
+    -moz-transition: all 0.2s ease; 
+    -ms-transition: all 0.2s ease; 
+    -o-transition: all 0.2s ease; 
+    transition: all 0.2s ease; }
+
+
+
+*/
+
+
+
+
+
+/* ======================================================
+   Media Queries
+   ====================================================== */
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+/* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+/* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+/* Styles */
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+/* Styles */
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+/* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+/* Styles */
+}
+/**********
+iPad 3
+**********/
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1224px) {
+/* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1824px) {
+/* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+
+/* iPhone 5 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* iPhone 6 ----------- */
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* iPhone 6+ ----------- */
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* Samsung Galaxy S3 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* Samsung Galaxy S4 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}
+
+/* Samsung Galaxy S5 ----------- */
+@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}
